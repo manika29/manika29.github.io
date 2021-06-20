@@ -1,0 +1,430 @@
+/* root selector is used for declaring the global variables  */
+:root {
+  --main-color: #4c84ff;
+  --primary-bg-color: #fff;
+  --secondary-bg-color: #eee;
+  --primary-text-color: #222;
+  --secondary-text-color: #666;
+}
+
+/* properties for entire document */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+
+* {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-transform: capitalize;
+  text-decoration: none;
+  outline: none;
+  border: none;
+  transition: all 0.3s cubic-bezier(0.38, 1.15, 0.7, 1.12);
+}
+
+/* selection selector will set the properties for any selected text in the doc. */
+*::selection {
+  /* var is used to assign the value of variable */
+  background-color: var(--main-color);
+  color: white;
+}
+
+html {
+  font-size: 62%;
+  /* The overflow-x property specifies whether to clip the content, add a scroll bar when it overflows at the left and right edges. */
+  overflow-x: hidden;
+  /* rem - root element size */
+  height: 180rem;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 1.3rem;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--secondary-bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: grey;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: lightslategray;
+}
+
+body {
+  background: var(--secondary-bg-color);
+}
+/* ********HEADER SECTION STARTS******** */
+section {
+  min-height: 100vh;
+  padding: 1rem;
+  padding: 0 8%;
+}
+/* Relative places an element relative to its current position without changing the layout around it, whereas 
+Absolute places an element relative to its parent's position and changing the layout around it */
+.btn {
+  display: inline-block;
+  padding: 1rem 1rem;
+  font-size: 2rem;
+  background: none;
+  position: relative;
+  color: #fff;
+  z-index: 0;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  overflow: hidden;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--main-color);
+}
+
+/* before selector insert some text before the content of each btn element */
+.btn::before {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 0.5rem;
+  background: var(--main-color);
+  height: 85%;
+  width: 95%;
+  z-index: -1;
+  transition: 0.2s linear;
+}
+
+.btn:hover:before {
+  top: 100%;
+  transform: translate(-50%, 100%);
+}
+
+.btn:hover {
+  color: var(--primary-text-color);
+}
+
+#menu {
+  font-size: 2rem;
+  background-color: var(--main-color);
+  color: #fff;
+  border-radius: 4rem;
+  height: 4rem;
+  width: 4rem;
+  text-align: center;
+  line-height: 4rem;
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  /* The z-index property specifies the stack order of an element. */
+  /* z-index only works on positioned elements */
+  z-index: 1000;
+  cursor: pointer;
+}
+/* Transform - Rotate, Translate, Scale etc */
+#menu.fa-times {
+  transform: rotate(-180deg);
+}
+
+.navbar {
+  position: fixed;
+  top: 2.4rem;
+  right: 2.7rem;
+  padding: 1.1rem 1.1rem;
+  padding-right: 4rem;
+  /* To keep the navbar below the menu button,we have to keep the z index of navbar less than menu. And to set z-index, position property is mandatory to set. */
+  z-index: 999;
+  border: 0.4rem solid var(--main-color);
+  border-radius: 1rem;
+  background: var(--primary-bg-color);
+  opacity: 0;
+  transform-origin: top right;
+  transform: scale(0);
+}
+
+.navbar.nav-toggle {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.navbar a {
+  /* To get in vertical line */
+  display: block;
+  font-size: 2rem;
+  padding: 1rem;
+  padding-right: 5rem;
+  color: var(--primary-text-color);
+}
+.navbar a:hover {
+  color: var(--main-color);
+  transform: translateX(0.7rem);
+}
+/* ******** HEADER SECTION ENDS ******** */
+
+/* ********HOME SECTION STARTS******** */
+.home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* The flex-wrap CSS property sets whether flex items are forced onto one line or can wrap onto multiple lines */
+  /* flex-wrap: wrap; */
+}
+.home .image {
+  /* The flex property sets the flexible length on flexible items. */
+  flex: 1 1 10rem;
+  padding-top: 2rem;
+  text-align: center;
+}
+.home .image img {
+  height: 45rem;
+  width: 30rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+  border-top: 3rem solid var(--primary-bg-color);
+  border-right: 3rem solid var(--primary-bg-color);
+  border-bottom: 3rem solid var(--main-color);
+  border-left: 3rem solid var(--main-color);
+}
+
+.home .content {
+  flex: 1 1 10rem;
+  padding: 0.5rem;
+}
+
+.home .content .hello {
+  display: inline-block;
+  padding: 1rem 0;
+  font-size: 2.6rem;
+  color: var(--secondary-text-color);
+}
+
+.home .content h3 {
+  color: var(--primary-text-color);
+  font-size: 3.5rem;
+}
+
+.home .content h3 span {
+  color: var(--main-color);
+}
+
+.home .content p {
+  padding: 1rem 0;
+  color: var(--secondary-text-color);
+  font-size: 1.7rem;
+}
+/* ******** HOME SECTION ENDS ******** */
+
+/* Media Queries */
+@media (max-width: 991px) {
+  html {
+    font-size: 55%;
+  }
+  section {
+    padding: 1rem;
+    padding: 0 3%;
+  }
+}
+
+.heading {
+  font-size: 3rem;
+  color: var(--primary-text-color);
+  text-align: center;
+  padding: 1rem;
+  text-transform: uppercase;
+}
+.heading span {
+  color: var(--main-color);
+  text-transform: uppercase;
+}
+
+/* ******** ABOUT SECTION STARTS ******** */
+.about .row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.about .row .box {
+  flex: 1 0 40rem;
+  background-color: var(--primary-bg-color);
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 1.5rem;
+  margin: 1.5rem;
+}
+
+.about .row .box .title {
+  color: var(--primary-text-color);
+  font-size: 2.1rem;
+  padding: 1rem 0;
+}
+
+.about .row .box .progress {
+  padding: 0.5rem 0;
+}
+
+.about .row .box .progress h3 {
+  font-size: 1.7rem;
+  color: var(--secondary-text-color);
+  display: flex;
+  justify-content: space-between;
+}
+
+.about .row .box .progress .bar {
+  height: 1.8rem;
+  border-radius: 0.5rem;
+  border: 0.2rem solid var(--main-color);
+  padding: 0.3rem;
+  margin: 1rem 0;
+}
+
+.about .row .box .progress .bar span {
+  height: 80%;
+  border-radius: 0.3rem;
+  background-color: var(--main-color);
+  display: block;
+}
+
+.about .row .box:nth-child(1) .progress:nth-child(2) .bar span {
+  width: 70%;
+}
+
+.about .row .box:nth-child(1) .progress:nth-child(3) .bar span {
+  width: 60%;
+}
+
+.about .row .box:nth-child(1) .progress:nth-child(4) .bar span {
+  width: 80%;
+}
+
+.about .row .box:nth-child(1) .progress:nth-child(5) .bar span {
+  width: 70%;
+}
+
+.about .row .box:nth-child(1) .progress:nth-child(6) .bar span {
+  width: 50%;
+}
+/* Soft Skills */
+.about .row .box:nth-child(2) .progress:nth-child(2) .bar span {
+  width: 90%;
+}
+
+.about .row .box:nth-child(2) .progress:nth-child(3) .bar span {
+  width: 75%;
+}
+
+.about .row .box:nth-child(2) .progress:nth-child(4) .bar span {
+  width: 80%;
+}
+
+.about .row .box:nth-child(2) .progress:nth-child(5) .bar span {
+  width: 100%;
+}
+
+.about .row .box:nth-child(2) .progress:nth-child(6) .bar span {
+  width: 90%;
+}
+
+.about .row .box .pro-box {
+  padding: 0 1.8rem;
+  margin-top: 1rem;
+  margin-bottom: 2.2rem;
+  border-left: 0.5rem solid var(--main-color);
+  position: relative;
+}
+.about .row .box .pro-box h3 {
+  color: var(--main-color);
+  font-size: 1.7rem;
+}
+
+.about .row .box .pro-box p {
+  color: var(--secondary-text-color);
+  font-size: 1.2rem;
+  padding: 1rem 0;
+}
+
+.about .row .box .pro-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -1rem;
+  border-radius: 50%;
+  height: 2rem;
+  width: 2rem;
+  background: var(--main-color);
+}
+.about .download {
+  background: var(--primary-bg-color);
+  border-radius: 0.5rem;
+  text-align: center;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  padding-bottom: 3rem;
+  margin: 1rem;
+}
+/* ******** ABOUT SECTION ENDS ******** */
+
+/* ******** FOOTER SECTION STARTS ******** */
+.footer {
+  padding: 2.5rem 1rem;
+  text-align: center;
+  font-size: 2rem;
+  color: var(--primary-text-color);
+  background-color: var(--primary-bg-color);
+  margin-top: 1rem;
+}
+
+.footer span {
+  color: var(--main-color);
+}
+
+/* ******** FOOTER SECTION ENDS ******** */
+
+/* ******** THEME ******** */
+#theme-toggler {
+  position: fixed;
+  top: 8.5rem;
+  right: 2rem;
+  z-index: 998;
+  height: 4rem;
+  width: 4rem;
+  line-height: 4rem;
+  text-align: center;
+  font-size: 2rem;
+  background: var(--main-color);
+  color: #fff;
+  cursor: pointer;
+  border-radius: 5rem;
+}
+#theme-toggler.fa-sun {
+  transform: rotate(-180deg);
+}
+body.dark-theme {
+  --primary-bg-color: #252c48;
+  --secondary-bg-color: #171c32;
+  --primary-text-color: #fff;
+  --secondary-text-color: #eee;
+}
+
+/* ******** MEDIA QUERIES ******** */
+@media (max-width: 991px) {
+  html {
+    font-size: 55%;
+  }
+  section {
+    padding: 1rem;
+    padding: 0 3%;
+  }
+}
+
+@media (max-width: 768px) {
+  .home .image img {
+    height: auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  html {
+    font-size: 58%;
+  }
+}
