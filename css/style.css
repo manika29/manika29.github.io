@@ -406,10 +406,12 @@ body.dark-theme {
 }
 
 /* ******** MEDIA QUERIES ******** */
+
 @media (max-width: 991px) {
   html {
     font-size: 55%;
   }
+
   section {
     padding: 1rem;
     padding: 0 3%;
@@ -425,6 +427,6 @@ body.dark-theme {
 
 @media (max-width: 400px) {
   html {
-    font-size: 58%;
+    font-size: 50%;
   }
 }
